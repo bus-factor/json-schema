@@ -1,0 +1,103 @@
+{
+    "name": "bus-factor/json-schema",
+    "description": "JSON schema",
+    "type": "library",
+    "license": "MIT",
+    "archive": {
+        "exclude": [
+            ".gitignore",
+            "ci"
+        ]
+    },
+    "keywords": [
+        "json",
+        "json-schema",
+        "jsonschema",
+        "schema"
+    ],
+    "support": {
+        "issues": "https://github.com/bus-factor/json-schema/issues",
+        "source": "https://github.com/bus-factor/json-schema"
+    },
+    "readme": "README.md",
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BusFactor\\JsonSchema\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BusFactor\\JsonSchema\\": "ci/phpunit/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Leßnau",
+            "email": "michael.lessnau@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "*",
+        "phpcompatibility/php-compatibility": "*",
+        "phpmd/phpmd": "*",
+        "phpstan/extension-installer": "*",
+        "phpstan/phpstan": "*",
+        "phpstan/phpstan-strict-rules": "*",
+        "phpunit/phpunit": "*",
+        "slevomat/coding-standard": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "scripts": {
+        "ci:*": [
+            "@ci:phpcs:fix",
+            "@ci:phpcs",
+            "@ci:phpmd",
+            "@ci:phpstan",
+            "@ci:phpunit:coverage"
+        ],
+        "ci:phpcs": [
+            "@putenv XDEBUG_MODE=off",
+            "phpcs --standard=ci/phpcs/phpcs.xml src ci/phpunit/src"
+        ],
+        "ci:phpcs:fix": [
+            "@putenv XDEBUG_MODE=off",
+            "phpcbf --standard=ci/phpcs/phpcs.xml src ci/phpunit/src"
+        ],
+        "ci:phpmd": [
+            "@putenv XDEBUG_MODE=off",
+            "phpmd src,ci/phpunit/src text ci/phpmd/phpmd.xml"
+        ],
+        "ci:phpstan": [
+            "@putenv XDEBUG_MODE=off",
+            "phpstan analyse --configuration ci/phpstan/phpstan.neon"
+        ],
+        "ci:phpunit": [
+            "@putenv XDEBUG_MODE=off",
+            "phpunit --configuration ci/phpunit/phpunit.xml --no-coverage"
+        ],
+        "ci:phpunit:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --configuration ci/phpunit/phpunit.xml"
+        ]
+    },
+    "scripts-descriptions": {
+        "ci:*": "Run CI scripts",
+        "ci:phpcs": "Run Code Sniffer",
+        "ci:phpcs:fix": "Fixes all Code Sniffer coding standards violations",
+        "ci:phpmd": "Run PHP Mess Detector",
+        "ci:phpstan": "Run PHPStan",
+        "ci:phpunit": "Run PHPUnit tests (without code coverage)",
+        "ci:phpunit:coverage": "Run PHPUnit tests (with code coverage)"
+    }
+}

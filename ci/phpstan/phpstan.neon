@@ -1,0 +1,11 @@
+parameters:
+    level: 9
+    strictRules:
+        allRules: true
+    treatPhpDocTypesAsCertain: false
+    paths:
+        - ../../src
+        - ../phpunit/src
+    parallel:
+      maximumNumberOfProcesses: 1
+    tmpDir: data
