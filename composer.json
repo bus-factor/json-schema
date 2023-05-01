@@ -34,7 +34,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BusFactor\\JsonSchema\\": "ci/phpunit/src/"
+            "BusFactor\\JsonSchemaTest\\": "ci/phpunit/src/"
         }
     },
     "authors": [
@@ -62,7 +62,6 @@
         "ci:*": [
             "@ci:phpcs:fix",
             "@ci:phpcs",
-            "@ci:phpmd",
             "@ci:phpstan",
             "@ci:phpunit:coverage"
         ],

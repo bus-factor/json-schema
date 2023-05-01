@@ -19,6 +19,7 @@
   <config installed_paths="../../vendor/slevomat/coding-standard" />
 
   <rule ref="SlevomatCodingStandard">
+    <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion" />
     <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces" />
     <exclude name="SlevomatCodingStandard.Classes.RequireAbstractOrFinal" />
     <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming" />
